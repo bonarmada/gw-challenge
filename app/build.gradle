@@ -62,13 +62,13 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     // Gson
-    implementation "com.google.code.gson:gson:2.8.6"
+    implementation "com.google.code.gson:gson:2.8.9"
 
     // OkHttp
     def okhttp_version = "4.9.3"
 
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:4$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
 
     // Room
     def room_version = "2.4.1"
@@ -77,6 +77,10 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
     implementation "androidx.room:room-rxjava3:$room_version"
+
+
+    // Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
     // endregion
 
