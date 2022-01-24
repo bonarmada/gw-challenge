@@ -7,8 +7,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.github.bonarmada.gw_challenge.R
 import io.github.bonarmada.gw_challenge.THROTTLE_TIME_IN_MS
 import io.github.bonarmada.gw_challenge.base.BaseFragment
+import io.github.bonarmada.gw_challenge.base.ItemCallback
+import io.github.bonarmada.gw_challenge.base.SimpleListAdapter
+import io.github.bonarmada.gw_challenge.data.model.CategoriesEnum
 import io.github.bonarmada.gw_challenge.data.model.Job
 import io.github.bonarmada.gw_challenge.databinding.FragmentHomeBinding
+import io.github.bonarmada.gw_challenge.databinding.ItemFilterBinding
 import io.github.bonarmada.gw_challenge.features.home.adapter.JobsAdapter
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.addTo
@@ -24,16 +28,29 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private val viewModel: HomeViewModel by viewModels()
 
     private var jobsAdapter: JobsAdapter? = null
+    private var filtersAdapter: SimpleListAdapter<CategoriesEnum, ItemFilterBinding>? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setupViews()
         setupVmObservers()
+
+        viewModel.setCategories(CategoriesEnum.values().map { it })
     }
 
     private fun setupViews() {
         with(binding) {
+            filtersRecyclerView.apply {
+                filtersAdapter = SimpleListAdapter(
+                    ItemCallback<CategoriesEnum>(), R.layout.item_filter
+                ) {
+
+                }
+
+                adapter = filtersAdapter
+            }
+
             jobsRecyclerView.apply {
                 jobsAdapter = JobsAdapter()
 
@@ -61,6 +78,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             .jobResults
             .observe(viewLifecycleOwner) { articles ->
                 jobsAdapter!!.submitData(lifecycle, articles)
+            }
+
+        viewModel
+            .categories.observe(viewLifecycleOwner) {
+                filtersAdapter?.submitList(it)
             }
     }
 
