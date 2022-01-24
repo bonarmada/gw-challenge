@@ -7,12 +7,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/filterButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/grid_16"
+            android:layout_marginHorizontal="@dimen/grid_8"
+            android:layout_marginStart="0dp"
+            android:background="@drawable/bg_rounded_8dp"
+            android:foreground="?selectableItemBackground"
+            android:padding="@dimen/grid_16"
+            android:src="@drawable/ic_filter_sliders"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/jobsRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/item_job"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/grid_16"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/filterButton"
+            tools:listitem="@layout/item_job" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -8,16 +8,16 @@
         <item name="colorSecondary">@color/viridian</item>
         <item name="colorOnSecondary">@color/white</item>
         <item name="colorPrimaryDark">@color/viridian</item>
-        <item name="colorAccent">@color/spring_green</item>
+        <item name="colorAccent">@color/picton_blue</item>
         <item name="android:colorBackground">@color/white</item>
         <item name="colorOnBackground">@color/tuatura</item>
-        <item name="colorSurface">@color/white</item>
+        <item name="colorSurface">@color/off_white</item>
         <item name="colorOnSurface">@color/tuatura</item>
         <item name="colorOnError">@color/white</item>
         <item name="android:textColor">@color/tuatura</item>
 
 
-        <item name="android:textViewStyle">@style/Widget.TextView</item>
+        <item name="android:textViewStyle">@style/Widget.TextView.Body</item>
 
     </style>
 </resources>

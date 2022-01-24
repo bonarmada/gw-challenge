@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Widget.TextView" parent="Widget.MaterialComponents.TextView">
-        <item name="android:textAppearance">@style/TextAppearance</item>
+    <style name="Widget.TextView.Title1" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">@style/TextAppearance.Title1</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.TextView.Title2" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">@style/TextAppearance.Title2</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.TextView.Title3" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">@style/TextAppearance.Title3</item>
+    </style>
+
+    <style name="Widget.TextView.Body" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">@style/TextAppearance.Body</item>
+    </style>
+
+    <style name="Widget.TextView.Subtitle" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">@style/TextAppearance.Subtitle</item>
+    </style>
+
+    <style name="Widget.TextView.Subtitle.Bold" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">@style/TextAppearance.Subtitle</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.TextView.Caption" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">@style/TextAppearance.Caption</item>
+        <item name="android:textColor">@color/tuatura_70</item>
     </style>
 
 </resources>

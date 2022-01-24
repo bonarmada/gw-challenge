@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="item"
             type="io.github.bonarmada.gw_challenge.data.model.Job" />
@@ -13,7 +15,14 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/itemClickable"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/grid_16"
+        android:layout_marginVertical="@dimen/grid_6"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/grid_16"
+        app:cardElevation="0dp"
+        app:contentPaddingBottom="@dimen/grid_16"
+        app:contentPaddingTop="@dimen/grid_16">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/container"
@@ -37,12 +46,69 @@
                 app:layout_constraintGuide_end="@dimen/grid_16" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
+                android:id="@+id/nameTextView"
+                style="@style/Widget.TextView.Title2"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{item.name}"
+                app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+                app:layout_constraintStart_toStartOf="@id/guidelineLeft"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="@tools:sample/cities"
-                app:layout_constraintStart_toStartOf="@id/guidelineLeft" />
+                tools:text="@tools:sample/cities" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/industryTextView"
+                style="@style/Widget.TextView.Body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_4"
+                android:text="@{item.displayCategory}"
+                android:visibility="@{item.displayCategory.empty ? View.GONE : View.VISIBLE}"
+                app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+                app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+                app:layout_constraintTop_toBottomOf="@id/nameTextView"
+                tools:text="@tools:sample/cities" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/companyTextView"
+                style="@style/Widget.TextView.Title3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_16"
+                android:layout_marginEnd="@dimen/grid_16"
+                android:text="@{item.company.name}"
+                android:textColor="?attr/colorAccent"
+                app:layout_constraintEnd_toStartOf="@id/viewWebsiteTextView"
+                app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+                app:layout_constraintTop_toBottomOf="@id/industryTextView"
+                tools:text="@tools:sample/cities" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/locationTextView"
+                style="@style/Widget.TextView.Caption"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_2"
+                android:layout_marginEnd="@dimen/grid_16"
+                android:text="@{item.displayLocation}"
+                android:visibility="@{item.displayLocation.empty ? View.GONE : View.VISIBLE}"
+                app:layout_constraintEnd_toStartOf="@id/viewWebsiteTextView"
+                app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+                app:layout_constraintTop_toBottomOf="@id/companyTextView"
+                tools:text="@tools:sample/cities" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/viewWebsiteTextView"
+                style="@style/Widget.TextView.Subtitle.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_right_arrow"
+                android:drawablePadding="@dimen/grid_8"
+                android:text="@string/view_website"
+                app:layout_constraintBottom_toBottomOf="@id/locationTextView"
+                app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+                app:layout_constraintTop_toTopOf="@id/companyTextView" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

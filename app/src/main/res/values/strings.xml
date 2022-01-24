@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">gw-challenge</string>
+    <string name="app_name">GoodWork</string>
+
+    <string name="view_website">View Website</string>
 </resources>

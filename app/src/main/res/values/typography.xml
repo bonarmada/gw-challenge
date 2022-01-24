@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="TextAppearance" parent="">
+    <style name="TextAppearance.Title1" parent="">
+        <item name="fontFamily">@font/proxima_nova_regular</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="TextAppearance.Title2" parent="">
+        <item name="fontFamily">@font/proxima_nova_regular</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="TextAppearance.Title3" parent="">
+        <item name="fontFamily">@font/proxima_nova_regular</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance.Body" parent="">
         <item name="fontFamily">@font/proxima_nova_regular</item>
         <item name="android:textSize">14sp</item>
+    </style>
+    <style name="TextAppearance.Subtitle" parent="">
+        <item name="fontFamily">@font/proxima_nova_regular</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="TextAppearance.Caption" parent="">
+        <item name="fontFamily">@font/proxima_nova_regular</item>
+        <item name="android:textSize">12sp</item>
     </style>
 </resources>
