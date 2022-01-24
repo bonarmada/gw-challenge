@@ -6,7 +6,6 @@ import timber.log.Timber
 class CategoriesEnumItemCallback : DiffUtil.ItemCallback<CategoriesEnum>() {
 
     override fun areItemsTheSame(oldItem: CategoriesEnum, newItem: CategoriesEnum): Boolean {
-        val x = oldItem.name == newItem.name
         return oldItem.name == newItem.name
     }
 

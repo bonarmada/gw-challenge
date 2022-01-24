@@ -17,8 +17,6 @@ class SimpleListAdapter<T : Any, B : ViewDataBinding>(
     private val itemClickListener: (T) -> Unit
 ) : ListAdapter<T, ViewHolder<B>>(diffUtil) {
 
-    private val items: MutableList<T> = mutableListOf()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<B> {
         return ViewHolder<B>(
             DataBindingUtil.inflate(
@@ -37,12 +35,8 @@ class SimpleListAdapter<T : Any, B : ViewDataBinding>(
         }
     }
 
-    open fun updateItems(items: List<T>, clearList: Boolean = false) {
-        if (clearList) {
-            this.items.clear()
-        }
-        this.items.addAll(items)
-        submitList(this.items.toMutableList())
+    open fun updateItems(items: List<T>) {
+        submitList(items)
         notifyDataSetChanged()
     }
 

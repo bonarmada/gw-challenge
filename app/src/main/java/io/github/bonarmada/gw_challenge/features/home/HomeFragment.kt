@@ -82,7 +82,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         viewModel
             .categories.observe(viewLifecycleOwner) {
-                filtersAdapter?.updateItems(it, true)
+                filtersAdapter?.updateItems(it)
 
                 // Update selected categories once when list is updating
                 viewModel.selectedCategories = it.filter { category ->
