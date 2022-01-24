@@ -10,12 +10,11 @@ data class JobDTO(
     @SerializedName("short_name") val shortName: String,
     @SerializedName("model_type") val modelType: String,
     @SerializedName("id") val id: Int,
-    @SerializedName("locations") val locationsDTO: List<LocationDTO>,
-    @SerializedName("categories") val categoriesDTO: List<CategoryDTO>,
-    @SerializedName("levels") val levelsDTO: List<LevelDTO>,
-    @SerializedName("tags") val tags: List<Any>,
-    @SerializedName("refs") val refsDTO: RefsDTO,
-    @SerializedName("company") val company: CompanyDTO
+    @SerializedName("locations") val locationsDTO: List<LocationDTO>?,
+    @SerializedName("categories") val categoriesDTO: List<CategoryDTO>?,
+    @SerializedName("levels") val levelsDTO: List<LevelDTO>?,
+    @SerializedName("refs") val refsDTO: RefsDTO?,
+    @SerializedName("company") val company: CompanyDTO?
 ) {
 
     data class LocationDTO(
@@ -59,12 +58,11 @@ fun JobDTO.asJob(): Job {
         shortName = shortName,
         modelType = modelType,
         id = id,
-        locations = locationsDTO.map { it.asLocation() },
-        categories = categoriesDTO.map { it.asCategory() },
-        levels = levelsDTO.map { it.asLevel() },
-        tags = tags,
-        refs = refsDTO.asRefs(),
-        company = company.asCompany()
+        locations = locationsDTO?.map { it.asLocation() } ?: listOf(),
+        categories = categoriesDTO?.map { it.asCategory() } ?: listOf(),
+        levels = levelsDTO?.map { it.asLevel() } ?: listOf(),
+        refs = refsDTO?.asRefs(),
+        company = company?.asCompany()
     )
 }
 

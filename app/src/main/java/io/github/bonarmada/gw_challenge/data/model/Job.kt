@@ -11,9 +11,8 @@ data class Job(
     val locations: List<Location>,
     val categories: List<Category>,
     val levels: List<Level>,
-    val tags: List<Any>,
-    val refs: Refs,
-    val company: Company
+    val refs: Refs?,
+    val company: Company?
 ) {
 
     data class Location(
