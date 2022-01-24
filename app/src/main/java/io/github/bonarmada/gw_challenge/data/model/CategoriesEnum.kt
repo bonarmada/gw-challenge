@@ -1,6 +1,9 @@
 package io.github.bonarmada.gw_challenge.data.model
 
-enum class CategoriesEnum(val stringValue: String) {
+enum class CategoriesEnum(
+    val stringValue: String,
+    var isSelected: Boolean = false
+) {
     SoftwareEngineer("Software Engineer"),
     UX("UX"),
     Design("Design"),

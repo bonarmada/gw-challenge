@@ -7,9 +7,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.github.bonarmada.gw_challenge.R
 import io.github.bonarmada.gw_challenge.THROTTLE_TIME_IN_MS
 import io.github.bonarmada.gw_challenge.base.BaseFragment
-import io.github.bonarmada.gw_challenge.base.ItemCallback
 import io.github.bonarmada.gw_challenge.base.SimpleListAdapter
 import io.github.bonarmada.gw_challenge.data.model.CategoriesEnum
+import io.github.bonarmada.gw_challenge.data.model.CategoriesEnumItemCallback
 import io.github.bonarmada.gw_challenge.data.model.Job
 import io.github.bonarmada.gw_challenge.databinding.FragmentHomeBinding
 import io.github.bonarmada.gw_challenge.databinding.ItemFilterBinding
@@ -43,9 +43,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         with(binding) {
             filtersRecyclerView.apply {
                 filtersAdapter = SimpleListAdapter(
-                    ItemCallback<CategoriesEnum>(), R.layout.item_filter
+                    CategoriesEnumItemCallback(), R.layout.item_filter
                 ) {
-                    viewModel.selectedCategories.add(it.stringValue)
+                    viewModel.onFilterSelected(it)
                     jobsAdapter?.refresh()
                 }
 
@@ -70,7 +70,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun handleItemClick(job: Job) {
-        // Todo: handle click
         Timber.d(job.toString())
     }
 
@@ -83,7 +82,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         viewModel
             .categories.observe(viewLifecycleOwner) {
-                filtersAdapter?.submitList(it)
+                filtersAdapter?.updateItems(it, true)
+
+                // Update selected categories once when list is updating
+                viewModel.selectedCategories = it.filter { category ->
+                    category.isSelected
+                }.map { category ->
+                    category.stringValue
+                }
             }
     }
 

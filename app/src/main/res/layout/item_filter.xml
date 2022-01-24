@@ -12,15 +12,14 @@
             type="io.github.bonarmada.gw_challenge.data.model.CategoriesEnum" />
     </data>
 
-    <CheckedTextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/itemClickable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:background="@drawable/bg_rounded_8dp"
+        android:background="@{item.selected ? @drawable/bg_color_primary_rounded_8dp : @drawable/bg_rounded_8dp}"
         android:foreground="?selectableItemBackground"
         android:padding="@dimen/grid_16"
-        android:src="@drawable/ic_filter_sliders"
         android:text="@{item.stringValue}"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="parent"

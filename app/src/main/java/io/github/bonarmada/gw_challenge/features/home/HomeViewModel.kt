@@ -22,11 +22,11 @@ class HomeViewModel @Inject constructor(
 
     val categories: LiveData<List<CategoriesEnum>> = _categories
 
-    fun setCategories(categories: List<CategoriesEnum>){
+    fun setCategories(categories: List<CategoriesEnum>) {
         _categories.value = categories
     }
 
-    val selectedCategories: MutableList<String> = mutableListOf()
+    var selectedCategories: List<String> = listOf()
 
     private val pager by lazy {
         Pager(
@@ -44,4 +44,14 @@ class HomeViewModel @Inject constructor(
         pager
             .liveData
             .cachedIn(viewModelScope)
+
+    fun onFilterSelected(categoryEnum: CategoriesEnum) {
+        _categories.value!!.find {
+            it == categoryEnum
+        }?.apply {
+            isSelected = !isSelected
+        }
+
+        _categories.value = _categories.value
+    }
 }
