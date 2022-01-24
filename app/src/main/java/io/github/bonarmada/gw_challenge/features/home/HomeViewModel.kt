@@ -16,7 +16,6 @@ class HomeViewModel @Inject constructor(
     private val jobsRepository: JobsRepository
 ) : BaseViewModel() {
 
-
     private val _categories by lazy {
         MutableLiveData<List<CategoriesEnum>>()
     }
@@ -27,12 +26,15 @@ class HomeViewModel @Inject constructor(
         _categories.value = categories
     }
 
+    val selectedCategories: MutableList<String> = mutableListOf()
+
     private val pager by lazy {
         Pager(
             config = PagingConfig(pageSize = 20),
             pagingSourceFactory = {
                 JobsPagingSource(
-                    jobsRepository
+                    jobsRepository,
+                    selectedCategories
                 )
             }
         )

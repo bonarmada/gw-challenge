@@ -10,10 +10,14 @@ import javax.inject.Inject
 class JobsRemoteDataSource @Inject constructor(
     private val apiService: GoodWorkApiService
 ) {
-    fun getJobs(page: Int): Single<Paging<Job>> {
+    fun getJobs(
+        page: Int,
+        vararg categories: String
+    ): Single<Paging<Job>> {
         return apiService
             .getJobs(
-                page = page
+                page = page,
+                *categories
             )
             .map { response ->
                 Paging(

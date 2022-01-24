@@ -45,7 +45,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 filtersAdapter = SimpleListAdapter(
                     ItemCallback<CategoriesEnum>(), R.layout.item_filter
                 ) {
-
+                    viewModel.selectedCategories.add(it.stringValue)
+                    jobsAdapter?.refresh()
                 }
 
                 adapter = filtersAdapter

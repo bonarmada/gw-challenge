@@ -10,6 +10,7 @@ import timber.log.Timber
 
 class JobsPagingSource constructor(
     private val jobsRepository: JobsRepository,
+    private val filters: List<String>? = null
 ) : RxPagingSource<Int, Job>() {
 
     override fun loadSingle(params: LoadParams<Int>): Single<LoadResult<Int, Job>> {
@@ -17,7 +18,8 @@ class JobsPagingSource constructor(
 
         return jobsRepository
             .getJobs(
-                page
+                page,
+                *(filters?.toTypedArray()!!)
             )
             .subscribeOn(Schedulers.io())
             .map {

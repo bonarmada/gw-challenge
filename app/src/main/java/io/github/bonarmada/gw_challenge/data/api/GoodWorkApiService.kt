@@ -10,6 +10,7 @@ interface GoodWorkApiService {
 
     @GET("jobs")
     fun getJobs(
-        @Query("page") page: Int
+        @Query("page") page: Int,
+        @Query("category") vararg category: String,
     ): Single<BaseResponse<JobDTO>>
 }

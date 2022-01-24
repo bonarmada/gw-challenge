@@ -10,10 +10,12 @@ class JobsRepository @Inject constructor(
     private val remoteDataSource: JobsRemoteDataSource
 ) {
     fun getJobs(
-        page: Int
+        page: Int,
+        vararg categories: String
     ): Single<Paging<Job>> {
         return remoteDataSource.getJobs(
-            page = page
+            page = page,
+            categories = categories
         )
     }
 }
