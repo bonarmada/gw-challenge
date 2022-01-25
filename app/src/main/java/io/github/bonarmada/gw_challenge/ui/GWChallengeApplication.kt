@@ -1,7 +1,8 @@
-package io.github.bonarmada.gw_challenge
+package io.github.bonarmada.gw_challenge.ui
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
+import io.github.bonarmada.gw_challenge.BuildConfig
 import timber.log.Timber
 
 @HiltAndroidApp

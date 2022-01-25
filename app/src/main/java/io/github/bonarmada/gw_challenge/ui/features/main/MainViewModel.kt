@@ -1,4 +1,4 @@
-package io.github.bonarmada.gw_challenge.features.main
+package io.github.bonarmada.gw_challenge.ui.features.main
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.bonarmada.gw_challenge.base.BaseViewModel

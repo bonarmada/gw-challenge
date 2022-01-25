@@ -1,4 +1,4 @@
-package io.github.bonarmada.gw_challenge.features.home
+package io.github.bonarmada.gw_challenge.ui.features.home
 
 import android.os.Bundle
 import android.view.View
@@ -13,7 +13,7 @@ import io.github.bonarmada.gw_challenge.data.model.CategoriesEnumItemCallback
 import io.github.bonarmada.gw_challenge.data.model.Job
 import io.github.bonarmada.gw_challenge.databinding.FragmentHomeBinding
 import io.github.bonarmada.gw_challenge.databinding.ItemFilterBinding
-import io.github.bonarmada.gw_challenge.features.home.adapter.JobsAdapter
+import io.github.bonarmada.gw_challenge.ui.features.home.adapter.JobsAdapter
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.addTo
 import io.reactivex.rxjava3.kotlin.subscribeBy

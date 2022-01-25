@@ -1,4 +1,4 @@
-package io.github.bonarmada.gw_challenge.features.home.adapter
+package io.github.bonarmada.gw_challenge.ui.features.home.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import io.github.bonarmada.gw_challenge.data.model.Job

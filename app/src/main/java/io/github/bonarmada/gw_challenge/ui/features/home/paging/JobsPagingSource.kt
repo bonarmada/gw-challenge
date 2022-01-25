@@ -1,4 +1,4 @@
-package io.github.bonarmada.gw_challenge.features.home.paging
+package io.github.bonarmada.gw_challenge.ui.features.home.paging
 
 import androidx.paging.PagingState
 import androidx.paging.rxjava3.RxPagingSource

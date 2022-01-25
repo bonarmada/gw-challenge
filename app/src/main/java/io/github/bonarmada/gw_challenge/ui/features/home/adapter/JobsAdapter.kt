@@ -1,4 +1,4 @@
-package io.github.bonarmada.gw_challenge.features.home.adapter
+package io.github.bonarmada.gw_challenge.ui.features.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
