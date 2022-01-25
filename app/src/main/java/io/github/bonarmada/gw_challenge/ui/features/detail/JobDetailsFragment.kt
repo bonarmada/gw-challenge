@@ -1,9 +1,17 @@
 package io.github.bonarmada.gw_challenge.ui.features.detail
 
+import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.text.Html
+import android.text.Html.FROM_HTML_MODE_LEGACY
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.jakewharton.rxbinding4.view.clicks
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.bonarmada.gw_challenge.R
 import io.github.bonarmada.gw_challenge.THROTTLE_TIME_IN_MS
@@ -30,18 +38,22 @@ class JobDetailsFragment : BaseFragment<FragmentJobDetailsBinding>() {
 
     private val viewModel: JobDetailsViewModel by viewModels()
 
+    private val args by navArgs<JobDetailsFragmentArgs>()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setupViews()
         setupVmObservers()
 
-        viewModel.getCompany()
+        viewModel.setJobData(args.job)
     }
 
     private fun setupViews() {
+        binding.applyNowButton.clicks().subscribe {
+            openPageOnExternalBrowser(args.job.jobLandingPageUrl)
+        }.addTo(disposables)
     }
-
 
     private fun setupVmObservers() {
         viewModel.state
@@ -65,7 +77,16 @@ class JobDetailsFragment : BaseFragment<FragmentJobDetailsBinding>() {
 
             }
             is JobDetailsState.UpdateJobDetails -> {
+                with(binding) {
+                    titleTextView.text = state.job.jobName
+                    companyNameTextView.text = state.job.companyName
+                    contentTextView.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                        Html.fromHtml(state.job.contents, Html.FROM_HTML_MODE_LEGACY)
+                    } else {
+                        Html.fromHtml(state.job.contents)
+                    }
 
+                }
             }
             is JobDetailsState.UpdateCompanyDetails -> {
                 with(binding) {
@@ -76,5 +97,9 @@ class JobDetailsFragment : BaseFragment<FragmentJobDetailsBinding>() {
                 }
             }
         }
+    }
+
+    private fun openPageOnExternalBrowser(url: String) {
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
     }
 }

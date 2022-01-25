@@ -9,6 +9,7 @@ data class JobUIRepresentation(
     val id: Int,
     val jobName: String,
     val contents: String,
+    val jobLandingPageUrl: String,
     val location: String,
     val category: String,
 
@@ -22,6 +23,7 @@ data class JobUIRepresentation(
                     id = id,
                     jobName = name,
                     contents = contents,
+                    jobLandingPageUrl = refs?.landingPage.orEmpty(),
                     location = locations.getOrNull(0)?.name.orEmpty(),
                     category = categories.joinToString(separator = " | ") { it.name },
                     companyName = company?.name.orEmpty(),

@@ -3,6 +3,7 @@ package io.github.bonarmada.gw_challenge.ui.features.detail
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.bonarmada.gw_challenge.base.BaseViewModel
 import io.github.bonarmada.gw_challenge.data.repository.JobsRepository
+import io.github.bonarmada.gw_challenge.ui.features.home.JobUIRepresentation
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.kotlin.addTo
@@ -23,8 +24,16 @@ class JobDetailsViewModel @Inject constructor(
 
     val state: Observable<JobDetailsState> = _state
 
-    fun getCompany() {
-        jobsRepository.getCompany(11913)
+    fun setJobData(job: JobUIRepresentation) {
+        _state.onNext(
+            JobDetailsState.UpdateJobDetails(job)
+        )
+
+        getCompany(job.companyId)
+    }
+
+    fun getCompany(companyId: Int) {
+        jobsRepository.getCompany(companyId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { _state.onNext(JobDetailsState.ShowLoading) }
@@ -32,7 +41,6 @@ class JobDetailsViewModel @Inject constructor(
             .doOnError { _state.onNext(JobDetailsState.HideLoading) }
             .subscribeBy(
                 onSuccess = {
-                    Timber.e(it.toString())
                     _state.onNext(
                         JobDetailsState.UpdateCompanyDetails(it)
                     )

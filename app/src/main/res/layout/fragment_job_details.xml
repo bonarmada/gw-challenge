@@ -3,65 +3,114 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:background="?attr/colorSurface">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineLeft"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="@dimen/grid_16" />
+            tools:background="?attr/colorSurface">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="@dimen/grid_16" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/grid_24" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/companyLogoImageView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/grid_64"
-            android:background="@drawable/bg_rounded_16dp"
-            android:padding="16dp"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent=".3"
-            tools:src="@tools:sample/backgrounds/scenic" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/grid_24" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/titleTextView"
-            style="@style/Widget.TextView.Title2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/grid_16"
-            android:layout_marginTop="@dimen/grid_16"
-            android:gravity="center"
-            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
-            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
-            app:layout_constraintTop_toBottomOf="@id/companyLogoImageView"
-            tools:text="@tools:sample/cities" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/companyLogoImageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/grid_64"
+                android:background="@drawable/bg_rounded_16dp"
+                android:padding="16dp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".3"
+                tools:src="@tools:sample/backgrounds/scenic" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/locationTextView"
-            style="@style/Widget.TextView.Title3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/grid_16"
-            android:layout_marginTop="@dimen/grid_4"
-            android:gravity="center"
-            android:textColor="@color/tuatura_70"
-            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
-            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
-            app:layout_constraintTop_toBottomOf="@id/titleTextView"
-            tools:text="@tools:sample/cities" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/titleTextView"
+                style="@style/Widget.TextView.Title2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/grid_16"
+                android:layout_marginTop="@dimen/grid_16"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+                app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+                app:layout_constraintTop_toBottomOf="@id/companyLogoImageView"
+                tools:text="@tools:sample/cities" />
 
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/companyNameTextView"
+                style="@style/Widget.TextView.Title3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/grid_16"
+                android:layout_marginTop="@dimen/grid_8"
+                android:gravity="center"
+                android:textColor="?attr/colorAccent"
+                app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+                app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+                app:layout_constraintTop_toBottomOf="@id/titleTextView"
+                tools:text="@tools:sample/cities" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/locationTextView"
+                style="@style/Widget.TextView.Body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/grid_16"
+                android:layout_marginTop="@dimen/grid_2"
+                android:gravity="center"
+                android:textColor="@color/tuatura_70"
+                app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+                app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+                app:layout_constraintTop_toBottomOf="@id/companyNameTextView"
+                tools:text="@tools:sample/cities" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/contentTextView"
+                style="@style/Widget.TextView.Body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_24"
+                android:layout_marginBottom="@dimen/grid_16"
+                android:background="@drawable/bg_rounded_16dp"
+                android:gravity="center"
+                android:padding="@dimen/grid_16"
+                app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+                app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+                app:layout_constraintTop_toBottomOf="@id/locationTextView"
+                tools:maxLines="34"
+                tools:text="@tools:sample/lorem/random" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/applyNowButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_16"
+                android:layout_marginBottom="@dimen/grid_16"
+                android:paddingVertical="@dimen/grid_12"
+                android:text="@string/apply_now"
+                android:textAppearance="@style/TextAppearance.Title3"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+                app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+                app:layout_constraintTop_toBottomOf="@id/contentTextView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>
