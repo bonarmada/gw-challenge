@@ -3,6 +3,7 @@ package io.github.bonarmada.gw_challenge.ui.features.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.bonarmada.gw_challenge.R
 import io.github.bonarmada.gw_challenge.THROTTLE_TIME_IN_MS
@@ -70,7 +71,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun handleItemClick(job: Job) {
-        Timber.d(job.toString())
+        findNavController().navigate(
+            HomeFragmentDirections
+                .actionHomeFragmentToJobDetailsFragment()
+        )
     }
 
     private fun setupVmObservers() {

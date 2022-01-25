@@ -9,6 +9,20 @@
         android:id="@+id/homeFragment"
         android:name="io.github.bonarmada.gw_challenge.ui.features.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_homeFragment_to_jobDetailsFragment"
+            app:destination="@id/jobDetailsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/homeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/jobDetailsFragment"
+        android:name="io.github.bonarmada.gw_challenge.ui.features.detail.JobDetailsFragment"
+        android:label="JobDetailsFragment"
+        tools:layout="@layout/fragment_job_details" />
 
 </navigation>
