@@ -18,7 +18,6 @@ import io.github.bonarmada.gw_challenge.ui.features.home.adapter.JobsAdapter
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.addTo
 import io.reactivex.rxjava3.kotlin.subscribeBy
-import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
@@ -70,18 +69,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
     }
 
-    private fun handleItemClick(job: Job) {
+    private fun handleItemClick(job: JobUIRepresentation) {
         findNavController().navigate(
             HomeFragmentDirections
-                .actionHomeFragmentToJobDetailsFragment()
+                .actionHomeFragmentToJobDetailsFragment(job)
         )
     }
 
     private fun setupVmObservers() {
         viewModel
             .jobResults
-            .observe(viewLifecycleOwner) { articles ->
-                jobsAdapter!!.submitData(lifecycle, articles)
+            .observe(viewLifecycleOwner) { jobs ->
+                jobsAdapter!!.submitData(lifecycle, jobs)
             }
 
         viewModel

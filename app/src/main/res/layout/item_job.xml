@@ -9,7 +9,7 @@
 
         <variable
             name="item"
-            type="io.github.bonarmada.gw_challenge.data.model.Job" />
+            type="io.github.bonarmada.gw_challenge.ui.features.home.JobUIRepresentation" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -50,7 +50,7 @@
                 style="@style/Widget.TextView.Title2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{item.name}"
+                android:text="@{item.jobName}"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toStartOf="@id/guidelineLeft"
                 app:layout_constraintTop_toTopOf="parent"
@@ -62,8 +62,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/grid_4"
-                android:text="@{item.displayCategory}"
-                android:visibility="@{item.displayCategory.empty ? View.GONE : View.VISIBLE}"
+                android:text="@{item.category}"
+                android:visibility="@{item.category.empty ? View.GONE : View.VISIBLE}"
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toStartOf="@id/guidelineLeft"
                 app:layout_constraintTop_toBottomOf="@id/nameTextView"
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/grid_16"
                 android:layout_marginEnd="@dimen/grid_16"
-                android:text="@{item.company.name}"
+                android:text="@{item.companyName}"
                 android:textColor="?attr/colorAccent"
                 app:layout_constraintEnd_toStartOf="@id/viewWebsiteTextView"
                 app:layout_constraintStart_toStartOf="@id/guidelineLeft"
@@ -90,8 +90,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/grid_2"
                 android:layout_marginEnd="@dimen/grid_16"
-                android:text="@{item.displayLocation}"
-                android:visibility="@{item.displayLocation.empty ? View.GONE : View.VISIBLE}"
+                android:text="@{item.location}"
+                android:visibility="@{item.location.empty ? View.GONE : View.VISIBLE}"
                 app:layout_constraintEnd_toStartOf="@id/viewWebsiteTextView"
                 app:layout_constraintStart_toStartOf="@id/guidelineLeft"
                 app:layout_constraintTop_toBottomOf="@id/companyTextView"

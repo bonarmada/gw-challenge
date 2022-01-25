@@ -1,13 +1,11 @@
 package io.github.bonarmada.gw_challenge.data.model
 
 
-import com.google.gson.annotations.SerializedName
-
 data class Company(
     val description: String,
-    val locations: List<Location>?,
-    val industries: List<Industry>?,
-    val tags: List<Tag>?,
+    val locations: List<Location>,
+    val industries: List<Industry>,
+    val tags: List<Tag>,
     val shortName: String,
     val name: String,
     val publicationDate: String,
@@ -15,6 +13,8 @@ data class Company(
     val id: Int,
     val refs: Refs?
 ) {
+    val displayLocation = locations.getOrNull(0)?.name.orEmpty()
+
     data class Location(
         val name: String
     )

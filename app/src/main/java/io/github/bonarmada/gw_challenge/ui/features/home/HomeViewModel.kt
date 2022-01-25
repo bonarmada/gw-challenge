@@ -2,6 +2,7 @@ package io.github.bonarmada.gw_challenge.ui.features.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -43,6 +44,11 @@ class HomeViewModel @Inject constructor(
     val jobResults =
         pager
             .liveData
+            .map { pagingData ->
+                pagingData.map {
+                    JobUIRepresentation.fromJob(it)
+                }
+            }
             .cachedIn(viewModelScope)
 
     fun onFilterSelected(categoryEnum: CategoriesEnum) {

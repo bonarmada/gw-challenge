@@ -1,18 +1,18 @@
 package io.github.bonarmada.gw_challenge.ui.features.home.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import io.github.bonarmada.gw_challenge.data.model.Job
+import io.github.bonarmada.gw_challenge.ui.features.home.JobUIRepresentation
 
-class JobsItemCallback : DiffUtil.ItemCallback<Job>() {
+class JobUIRepresentationItemCallback : DiffUtil.ItemCallback<JobUIRepresentation>() {
 
-    override fun areItemsTheSame(oldItem: Job, newItem: Job): Boolean {
+    override fun areItemsTheSame(oldItem: JobUIRepresentation, newItem: JobUIRepresentation): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: Job, newItem: Job): Boolean {
+    override fun areContentsTheSame(oldItem: JobUIRepresentation, newItem: JobUIRepresentation): Boolean {
         return oldItem.contents == newItem.contents &&
-                oldItem.name == newItem.name &&
-                oldItem.publicationDate == newItem.publicationDate &&
-                oldItem.company == newItem.company
+                oldItem.companyName == newItem.companyName &&
+                oldItem.jobName == newItem.jobName &&
+                oldItem.location == newItem.location
     }
 }

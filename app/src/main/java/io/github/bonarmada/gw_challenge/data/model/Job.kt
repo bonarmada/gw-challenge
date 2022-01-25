@@ -14,8 +14,6 @@ data class Job(
     val refs: Refs?,
     val company: Company?
 ) {
-    val displayLocation = locations.getOrNull(0)?.name.orEmpty()
-    val displayCategory = categories.joinToString(separator = " | ") { it.name }
 
     class Location(
         val name: String
