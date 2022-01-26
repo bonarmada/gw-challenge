@@ -91,9 +91,9 @@ class JobDetailsFragment : BaseFragment<FragmentJobDetailsBinding>() {
             is JobDetailsState.UpdateCompanyDetails -> {
                 with(binding) {
                     Glide.with(binding.root.context)
-                        .load(state.company.refs?.logoImage)
+                        .load(state.company.logoUrl)
                         .into(companyLogoImageView)
-                    locationTextView.text = state.company.displayLocation
+                    locationTextView.text = state.company.location
                 }
             }
         }

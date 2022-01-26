@@ -32,7 +32,7 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="@dimen/grid_64"
                 android:background="@drawable/bg_rounded_16dp"
-                android:padding="16dp"
+                android:padding="@dimen/grid_12"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -13,7 +13,20 @@ data class Company(
     val id: Int,
     val refs: Refs?
 ) {
-    val displayLocation = locations.getOrNull(0)?.name.orEmpty()
+    companion object {
+        fun empty() = Company(
+            "",
+            listOf(),
+            listOf(),
+            listOf(),
+            "",
+            "",
+            "",
+            "",
+            0,
+            null
+        )
+    }
 
     data class Location(
         val name: String
@@ -34,12 +47,12 @@ data class Company(
     )
 
     data class Refs(
-        val landingPage: String?,
-        val jobsPage: String?,
-        val miniF1Image: String?,
-        val f2Image: String?,
-        val logoImage: String?,
-        val f1Image: String?,
-        val f3Image: String?
+        val landingPage: String? = null,
+        val jobsPage: String? = null,
+        val miniF1Image: String? = null,
+        val f2Image: String? = null,
+        val logoImage: String? = null,
+        val f1Image: String? = null,
+        val f3Image: String? = null
     )
 }

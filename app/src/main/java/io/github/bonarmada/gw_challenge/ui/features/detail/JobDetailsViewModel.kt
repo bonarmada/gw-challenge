@@ -32,8 +32,11 @@ class JobDetailsViewModel @Inject constructor(
         getCompany(job.companyId)
     }
 
-    fun getCompany(companyId: Int) {
+    private fun getCompany(companyId: Int) {
         jobsRepository.getCompany(companyId)
+            .map {
+                CompanyUIRepresentation.fromCompany(it)
+            }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { _state.onNext(JobDetailsState.ShowLoading) }

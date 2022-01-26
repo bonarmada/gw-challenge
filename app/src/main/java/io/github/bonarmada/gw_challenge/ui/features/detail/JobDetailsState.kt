@@ -1,6 +1,5 @@
 package io.github.bonarmada.gw_challenge.ui.features.detail
 
-import io.github.bonarmada.gw_challenge.data.model.Company
 import io.github.bonarmada.gw_challenge.ui.features.home.JobUIRepresentation
 
 sealed class JobDetailsState {
@@ -11,5 +10,5 @@ sealed class JobDetailsState {
 
     data class UpdateJobDetails(val job: JobUIRepresentation) : JobDetailsState()
 
-    data class UpdateCompanyDetails(val company: Company) : JobDetailsState()
+    data class UpdateCompanyDetails(val company: CompanyUIRepresentation) : JobDetailsState()
 }
