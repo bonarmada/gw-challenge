@@ -9,7 +9,7 @@ import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
 
 @Dao
-interface CompanyDao {
+interface FavoriteJobDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(company: CompanyDB): Completable
 

@@ -30,7 +30,7 @@ class JobsRepository @Inject constructor(
         id: Int
     ): Flowable<Company> {
 
-        return companyDao.getCompany(id).map { CompanyDB.asCompany(it) }
+        return companyDao.getCompany(id).map { CompanyDB.toCompany(it) }
     }
 
     fun getCompanyFromRemote(id: Int): Completable {

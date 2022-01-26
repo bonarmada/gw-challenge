@@ -23,7 +23,7 @@ data class CompanyDB(
             }
         }
 
-        fun asCompany(company: CompanyDB): Company {
+        fun toCompany(company: CompanyDB): Company {
             return with(company) {
                 Company.empty().copy(
                     id = id,

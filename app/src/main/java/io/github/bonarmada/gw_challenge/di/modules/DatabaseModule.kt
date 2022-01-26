@@ -9,6 +9,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.github.bonarmada.gw_challenge.data.db.AppDatabase
 import io.github.bonarmada.gw_challenge.data.db.CompanyDao
+import io.github.bonarmada.gw_challenge.data.db.JobDao
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
@@ -28,5 +29,10 @@ class DatabaseModule {
     @Provides
     fun provideCompanyDao(appDatabase: AppDatabase): CompanyDao {
         return appDatabase.companyDao()
+    }
+
+    @Provides
+    fun provideJobDao(appDatabase: AppDatabase): JobDao {
+        return appDatabase.jobDao()
     }
 }

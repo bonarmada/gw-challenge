@@ -15,6 +15,23 @@ data class Job(
     val company: Company?
 ) {
 
+    companion object {
+        fun empty() = Job(
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            0,
+            listOf(),
+            listOf(),
+            listOf(),
+            Refs(""),
+            Company(0, "", "")
+        )
+    }
+
     class Location(
         val name: String
     )
