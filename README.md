@@ -1,9 +1,18 @@
-# gw-challenge
+# GoodWork
+
+Goodwork is a job-seeker app that uses [The muse API: job boards and company profiles](https://www.themuse.com/developers/api/v2). The criteria when I chose which API to use is (1) public, (2) capable of Pagination. The main features of the app are: 
+* Retrieve paginated data of available jobs. 
+* Filter through different industries.
+* Offline-first data flow via repository pattern
+* Save and unsave from favourites.
+
+
+# Tech used
 
 MinSdk 23 - [as all practical, and rational developers should use](https://twitter.com/minsdkversion)
 
 #### Persistence
-Used repository pattern, simple but clear data flow from remote source to UI. Used Room and SharedPreferences to persists data.
+Used repository pattern, simple but clear data flow from remote source to local source to UI. Used Room to persist data.
 
 
 #### Architecture
@@ -28,3 +37,10 @@ Most of these are pretty much community standards.
 * Glide - image loading and caching library.
 * Timber - logging
 
+
+#### TODOs
+- :white_check_mark: Persistence
+- :white_check_mark: Favorites
+- :white_square_button: Unit testing
+- :white_square_button: Register to the API and use an API (currently limited to 500 requests/hour)
+- :white_square_button: Paging3 + Room
