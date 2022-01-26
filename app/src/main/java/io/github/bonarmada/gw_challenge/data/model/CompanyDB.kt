@@ -1,20 +1,37 @@
 package io.github.bonarmada.gw_challenge.data.model
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity(tableName = "companies")
 data class CompanyDB(
-    val id: Int,
+    @PrimaryKey val id: Int,
     val name: String,
     val location: String,
     val logoUrl: String
-)
+) {
+    companion object {
+        fun fromCompany(company: Company): CompanyDB {
+            return with(company) {
+                CompanyDB(
+                    id = id,
+                    name = name,
+                    location = locations.getOrNull(0)?.name.orEmpty(),
+                    logoUrl = refs?.logoImage.orEmpty()
+                )
+            }
+        }
 
-fun CompanyDB.asCompany(): Company {
-    return Company.empty().copy(
-        id = this.id,
-        name = name,
-        locations = listOf(Company.Location(location)),
-        refs = Company.Refs(logoImage = logoUrl)
-    )
+        fun asCompany(company: CompanyDB): Company {
+            return with(company) {
+                Company.empty().copy(
+                    id = id,
+                    name = name,
+                    locations = listOf(Company.Location(location)),
+                    refs = Company.Refs(logoImage = logoUrl)
+                )
+            }
+        }
+
+    }
 }

@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import io.github.bonarmada.gw_challenge.data.db.CompanyDao
 import io.github.bonarmada.gw_challenge.data.remote.JobsRemoteDataSource
 import io.github.bonarmada.gw_challenge.data.repository.JobsRepository
 import javax.inject.Singleton
@@ -14,6 +15,9 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    internal fun provideJobsRepository(jobsRemoteDataSource: JobsRemoteDataSource): JobsRepository =
-        JobsRepository(jobsRemoteDataSource)
+    internal fun provideJobsRepository(
+        jobsRemoteDataSource: JobsRemoteDataSource,
+        companyDao: CompanyDao
+    ): JobsRepository =
+        JobsRepository(jobsRemoteDataSource,companyDao)
 }

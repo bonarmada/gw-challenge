@@ -5,31 +5,20 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
-import android.text.Html.FROM_HTML_MODE_LEGACY
 import android.view.View
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.jakewharton.rxbinding4.view.clicks
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.bonarmada.gw_challenge.R
-import io.github.bonarmada.gw_challenge.THROTTLE_TIME_IN_MS
 import io.github.bonarmada.gw_challenge.base.BaseFragment
-import io.github.bonarmada.gw_challenge.base.SimpleListAdapter
-import io.github.bonarmada.gw_challenge.data.model.CategoriesEnum
-import io.github.bonarmada.gw_challenge.data.model.CategoriesEnumItemCallback
-import io.github.bonarmada.gw_challenge.data.model.Job
-import io.github.bonarmada.gw_challenge.databinding.FragmentHomeBinding
 import io.github.bonarmada.gw_challenge.databinding.FragmentJobDetailsBinding
-import io.github.bonarmada.gw_challenge.databinding.ItemFilterBinding
-import io.github.bonarmada.gw_challenge.ui.features.home.adapter.JobsAdapter
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.BackpressureStrategy
 import io.reactivex.rxjava3.kotlin.addTo
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import timber.log.Timber
-import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
 class JobDetailsFragment : BaseFragment<FragmentJobDetailsBinding>() {

@@ -1,15 +1,18 @@
 package io.github.bonarmada.gw_challenge.data.repository
 
-import io.github.bonarmada.gw_challenge.data.model.Company
-import io.github.bonarmada.gw_challenge.data.model.Job
-import io.github.bonarmada.gw_challenge.data.model.Paging
-import io.github.bonarmada.gw_challenge.data.model.asCompany
+import io.github.bonarmada.gw_challenge.data.db.CompanyDao
+import io.github.bonarmada.gw_challenge.data.model.*
 import io.github.bonarmada.gw_challenge.data.remote.JobsRemoteDataSource
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
+import timber.log.Timber
 import javax.inject.Inject
 
 class JobsRepository @Inject constructor(
-    private val remoteDataSource: JobsRemoteDataSource
+    private val remoteDataSource: JobsRemoteDataSource,
+    private val companyDao: CompanyDao
 ) {
     fun getJobs(
         page: Int,
@@ -21,9 +24,17 @@ class JobsRepository @Inject constructor(
         )
     }
 
-    fun getCompany(id: Int): Single<Company> {
-        return remoteDataSource.getCompany(
-            id = id
-        )
+
+    fun getCompany(
+        id: Int
+    ): Flowable<Company> {
+
+        return companyDao.getCompany(id).map { CompanyDB.asCompany(it) }
+    }
+
+    fun getCompanyFromRemote(id: Int): Completable {
+        return remoteDataSource.getCompany(id = id).flatMapCompletable {
+            companyDao.insert(CompanyDB.fromCompany(it))
+        }
     }
 }

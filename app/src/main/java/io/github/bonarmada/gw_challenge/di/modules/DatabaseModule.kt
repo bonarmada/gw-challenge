@@ -21,7 +21,7 @@ class DatabaseModule {
         return Room.databaseBuilder(
             appContext,
             AppDatabase::class.java,
-            "Gw-challenge"
+            "Gw-challenge.db"
         ).build()
     }
 

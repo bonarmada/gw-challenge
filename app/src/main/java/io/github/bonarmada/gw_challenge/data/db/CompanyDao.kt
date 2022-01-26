@@ -6,7 +6,8 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import io.github.bonarmada.gw_challenge.data.model.CompanyDB
 import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.core.Maybe
 
 
 @Dao
@@ -15,5 +16,5 @@ interface CompanyDao {
     fun insert(company: CompanyDB): Completable
 
     @Query("SELECT * FROM companies WHERE id IN (:id) LIMIT 1")
-    fun getCompany(id: Int): Single<CompanyDB>
+    fun getCompany(id: Int): Flowable<CompanyDB>
 } 

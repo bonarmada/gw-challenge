@@ -29,24 +29,45 @@ class JobDetailsViewModel @Inject constructor(
             JobDetailsState.UpdateJobDetails(job)
         )
 
+        setupCompanyObserver(job.companyId)
         getCompany(job.companyId)
     }
 
-    private fun getCompany(companyId: Int) {
+    /**
+     * @return a Flowable that emits everytime the data source, in this case the room db is updated
+     */
+    private fun setupCompanyObserver(companyId: Int) {
         jobsRepository.getCompany(companyId)
             .map {
                 CompanyUIRepresentation.fromCompany(it)
             }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { _state.onNext(JobDetailsState.ShowLoading) }
-            .doOnSuccess { _state.onNext(JobDetailsState.HideLoading) }
-            .doOnError { _state.onNext(JobDetailsState.HideLoading) }
             .subscribeBy(
-                onSuccess = {
+                onNext = {
                     _state.onNext(
                         JobDetailsState.UpdateCompanyDetails(it)
                     )
+                },
+                onError = {
+                    Timber.e(it)
+                }
+            ).addTo(disposables)
+    }
+
+    /**
+     * Fetches company data from remote api, then saves the data to room db
+     */
+    fun getCompany(id: Int) {
+        jobsRepository.getCompanyFromRemote(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { _state.onNext(JobDetailsState.ShowLoading) }
+            .doOnComplete { _state.onNext(JobDetailsState.HideLoading) }
+            .doOnError { _state.onNext(JobDetailsState.HideLoading) }
+            .subscribeBy(
+                onComplete = {
+                    Timber.e("onComplete")
                 },
                 onError = {
                     Timber.e(it)
