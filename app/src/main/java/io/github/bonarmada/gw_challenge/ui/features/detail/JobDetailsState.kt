@@ -11,4 +11,6 @@ sealed class JobDetailsState {
     data class UpdateJobDetails(val job: JobUIRepresentation) : JobDetailsState()
 
     data class UpdateCompanyDetails(val company: CompanyUIRepresentation) : JobDetailsState()
+
+    data class UpdateFavoriteIcon(val isFavorite: Boolean) : JobDetailsState()
 }

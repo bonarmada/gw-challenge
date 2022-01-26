@@ -32,6 +32,10 @@ class JobDetailsFragment : BaseFragment<FragmentJobDetailsBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupToolbar(
+            toolbar = binding.includeToolbar.toolbar
+        )
+
         setupViews()
         setupVmObservers()
 
@@ -39,6 +43,10 @@ class JobDetailsFragment : BaseFragment<FragmentJobDetailsBinding>() {
     }
 
     private fun setupViews() {
+        binding.includeToolbar.toolbarButton.clicks().subscribe {
+            viewModel.onFavoritesClick(args.job)
+        }.addTo(disposables)
+
         binding.applyNowButton.clicks().subscribe {
             openPageOnExternalBrowser(args.job.jobLandingPageUrl)
         }.addTo(disposables)
@@ -64,6 +72,12 @@ class JobDetailsFragment : BaseFragment<FragmentJobDetailsBinding>() {
             }
             is JobDetailsState.HideLoading -> {
 
+            }
+            is JobDetailsState.UpdateFavoriteIcon -> {
+                when (state.isFavorite) {
+                    true -> binding.includeToolbar.toolbarButton.setImageResource(R.drawable.ic_baseline_favorite_24)
+                    false -> binding.includeToolbar.toolbarButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                }
             }
             is JobDetailsState.UpdateJobDetails -> {
                 with(binding) {

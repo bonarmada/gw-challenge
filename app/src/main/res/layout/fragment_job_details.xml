@@ -26,17 +26,21 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_end="@dimen/grid_24" />
 
+            <include
+                android:id="@+id/includeToolbar"
+                layout="@layout/include_toolbar" />
+
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/companyLogoImageView"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="@dimen/grid_64"
+                android:layout_marginTop="@dimen/grid_16"
                 android:background="@drawable/bg_rounded_16dp"
                 android:padding="@dimen/grid_12"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/includeToolbar"
                 app:layout_constraintWidth_percent=".3"
                 tools:src="@tools:sample/backgrounds/scenic" />
 

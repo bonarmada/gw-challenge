@@ -31,8 +31,7 @@
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackgroundBorderless"
             android:padding="@dimen/grid_4"
-            android:src="@drawable/ic_baseline_favorite_border_24"
-            android:tint="@color/tuatura_70" />
+            android:src="@drawable/ic_baseline_favorite_border_24" />
 
     </com.google.android.material.appbar.MaterialToolbar>
 </layout>

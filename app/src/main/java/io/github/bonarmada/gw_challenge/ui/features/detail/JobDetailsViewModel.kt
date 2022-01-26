@@ -24,17 +24,20 @@ class JobDetailsViewModel @Inject constructor(
 
     val state: Observable<JobDetailsState> = _state
 
+    private var isFavorite = false
+
     fun setJobData(job: JobUIRepresentation) {
         _state.onNext(
             JobDetailsState.UpdateJobDetails(job)
         )
 
+        setupFavouriteObserver(job.id)
         setupCompanyObserver(job.companyId)
         getCompany(job.companyId)
     }
 
     /**
-     * @return a Flowable that emits everytime the data source, in this case the room db is updated
+     * @subscribe to  a Flowable that emits everytime the data source, in this case the room db is updated
      */
     private fun setupCompanyObserver(companyId: Int) {
         jobsRepository.getCompany(companyId)
@@ -51,6 +54,28 @@ class JobDetailsViewModel @Inject constructor(
                 },
                 onError = {
                     Timber.e(it)
+                }
+            ).addTo(disposables)
+    }
+
+    /**
+     * @subscribe to a Flowable that emits everytime the data source, in this case the room db is updated
+     */
+    private fun setupFavouriteObserver(jobId: Int) {
+        jobsRepository.getFavoriteJob(jobId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onNext = {
+                    isFavorite = true
+                    _state.onNext(
+                        JobDetailsState.UpdateFavoriteIcon(true)
+                    )
+                },
+                onError = {
+                    Timber.e(it)
+                    isFavorite = false
+                    JobDetailsState.UpdateFavoriteIcon(false)
                 }
             ).addTo(disposables)
     }
@@ -74,4 +99,54 @@ class JobDetailsViewModel @Inject constructor(
                 }
             ).addTo(disposables)
     }
+
+    /**
+     * Add job to favourites
+     */
+    private fun saveToFavourites(job: JobUIRepresentation) {
+        jobsRepository.addJobToFavorites(JobUIRepresentation.toJob(job))
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onComplete = {
+                    isFavorite = true
+                    _state.onNext(
+                        JobDetailsState.UpdateFavoriteIcon(true)
+                    )
+                },
+                onError = {
+                    Timber.e(it)
+                }
+            ).addTo(disposables)
+    }
+
+    /**
+     * Add job to favourites
+     */
+    private fun removeFromFavourites(job: JobUIRepresentation) {
+        jobsRepository.removeJobFromFavourites(JobUIRepresentation.toJob(job))
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onComplete = {
+                    isFavorite = false
+                    _state.onNext(
+                        JobDetailsState.UpdateFavoriteIcon(false)
+                    )
+                },
+                onError = {
+                    Timber.e(it)
+                }
+            ).addTo(disposables)
+    }
+
+    fun onFavoritesClick(job: JobUIRepresentation) {
+        if (isFavorite) {
+            removeFromFavourites(job)
+        } else {
+            saveToFavourites(job)
+        }
+    }
+
+
 }
