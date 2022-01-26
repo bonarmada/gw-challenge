@@ -1,7 +1,8 @@
-package io.github.bonarmada.gw_challenge.data.model
+package io.github.bonarmada.gw_challenge.data.db.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import io.github.bonarmada.gw_challenge.domain.models.Company
 
 @Entity(tableName = "companies")
 data class CompanyDB(

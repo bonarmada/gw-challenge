@@ -1,7 +1,6 @@
-package io.github.bonarmada.gw_challenge.data.model
+package io.github.bonarmada.gw_challenge.domain.models
 
 import androidx.recyclerview.widget.DiffUtil
-import timber.log.Timber
 
 class CategoriesEnumItemCallback : DiffUtil.ItemCallback<CategoriesEnum>() {
 

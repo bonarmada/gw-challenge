@@ -1,7 +1,11 @@
 package io.github.bonarmada.gw_challenge.data.remote
 
 import io.github.bonarmada.gw_challenge.data.api.GoodWorkApiService
-import io.github.bonarmada.gw_challenge.data.model.*
+import io.github.bonarmada.gw_challenge.data.remote.models.asCompany
+import io.github.bonarmada.gw_challenge.data.remote.models.asJob
+import io.github.bonarmada.gw_challenge.domain.Paging
+import io.github.bonarmada.gw_challenge.domain.models.Company
+import io.github.bonarmada.gw_challenge.domain.models.Job
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 

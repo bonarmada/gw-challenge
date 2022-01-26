@@ -1,13 +1,14 @@
 package io.github.bonarmada.gw_challenge.data.repository
 
 import io.github.bonarmada.gw_challenge.data.db.CompanyDao
-import io.github.bonarmada.gw_challenge.data.model.*
+import io.github.bonarmada.gw_challenge.data.db.models.CompanyDB
 import io.github.bonarmada.gw_challenge.data.remote.JobsRemoteDataSource
+import io.github.bonarmada.gw_challenge.domain.Paging
+import io.github.bonarmada.gw_challenge.domain.models.Company
+import io.github.bonarmada.gw_challenge.domain.models.Job
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
-import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
-import timber.log.Timber
 import javax.inject.Inject
 
 class JobsRepository @Inject constructor(

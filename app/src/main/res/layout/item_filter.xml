@@ -9,7 +9,7 @@
 
         <variable
             name="item"
-            type="io.github.bonarmada.gw_challenge.data.model.CategoriesEnum" />
+            type="io.github.bonarmada.gw_challenge.domain.models.CategoriesEnum" />
     </data>
 
     <com.google.android.material.textview.MaterialTextView

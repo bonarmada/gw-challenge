@@ -4,10 +4,9 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import io.github.bonarmada.gw_challenge.data.model.CompanyDB
+import io.github.bonarmada.gw_challenge.data.db.models.CompanyDB
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
-import io.reactivex.rxjava3.core.Maybe
 
 
 @Dao

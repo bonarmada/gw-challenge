@@ -1,8 +1,8 @@
 package io.github.bonarmada.gw_challenge.data.api
 
 import io.github.bonarmada.gw_challenge.base.BaseResponse
-import io.github.bonarmada.gw_challenge.data.model.CompanyDTO
-import io.github.bonarmada.gw_challenge.data.model.JobDTO
+import io.github.bonarmada.gw_challenge.data.remote.models.CompanyDTO
+import io.github.bonarmada.gw_challenge.data.remote.models.JobDTO
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

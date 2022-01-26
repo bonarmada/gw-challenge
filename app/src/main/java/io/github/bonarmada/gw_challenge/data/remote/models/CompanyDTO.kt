@@ -1,7 +1,8 @@
-package io.github.bonarmada.gw_challenge.data.model
+package io.github.bonarmada.gw_challenge.data.remote.models
 
 
 import com.google.gson.annotations.SerializedName
+import io.github.bonarmada.gw_challenge.domain.models.Company
 
 data class CompanyDTO(
     @SerializedName("description")

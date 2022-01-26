@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.bonarmada.gw_challenge.base.BaseViewModel
-import io.github.bonarmada.gw_challenge.data.model.CategoriesEnum
+import io.github.bonarmada.gw_challenge.domain.models.CategoriesEnum
 import io.github.bonarmada.gw_challenge.data.repository.JobsRepository
 import io.github.bonarmada.gw_challenge.ui.features.home.paging.JobsPagingSource
 import javax.inject.Inject

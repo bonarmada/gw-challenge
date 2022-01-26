@@ -1,4 +1,4 @@
-package io.github.bonarmada.gw_challenge.data.model
+package io.github.bonarmada.gw_challenge.domain.models
 
 data class Job(
     val contents: String,

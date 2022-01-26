@@ -9,11 +9,10 @@ import io.github.bonarmada.gw_challenge.R
 import io.github.bonarmada.gw_challenge.THROTTLE_TIME_IN_MS
 import io.github.bonarmada.gw_challenge.base.BaseFragment
 import io.github.bonarmada.gw_challenge.base.SimpleListAdapter
-import io.github.bonarmada.gw_challenge.data.model.CategoriesEnum
-import io.github.bonarmada.gw_challenge.data.model.CategoriesEnumItemCallback
-import io.github.bonarmada.gw_challenge.data.model.Job
+import io.github.bonarmada.gw_challenge.domain.models.CategoriesEnum
 import io.github.bonarmada.gw_challenge.databinding.FragmentHomeBinding
 import io.github.bonarmada.gw_challenge.databinding.ItemFilterBinding
+import io.github.bonarmada.gw_challenge.domain.models.CategoriesEnumItemCallback
 import io.github.bonarmada.gw_challenge.ui.features.home.adapter.JobsAdapter
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.addTo
@@ -33,6 +32,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupToolbar(
+            toolbar = binding.includeToolbar.toolbar,
+            title = getString(R.string.app_name),
+            showBackButton = false
+        )
         setupViews()
         setupVmObservers()
 

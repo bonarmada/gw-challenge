@@ -1,7 +1,7 @@
 package io.github.bonarmada.gw_challenge.ui.features.home
 
 import android.os.Parcelable
-import io.github.bonarmada.gw_challenge.data.model.Job
+import io.github.bonarmada.gw_challenge.domain.models.Job
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

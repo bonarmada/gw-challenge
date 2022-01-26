@@ -16,7 +16,7 @@
         <item name="colorOnError">@color/white</item>
         <item name="android:textColor">@color/tuatura</item>
 
-
+        <item name="windowNoTitle">true</item>
         <item name="android:textViewStyle">@style/Widget.TextView.Body</item>
 
     </style>
