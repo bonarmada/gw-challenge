@@ -30,6 +30,18 @@
                 android:id="@+id/includeToolbar"
                 layout="@layout/include_toolbar" />
 
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
+
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/companyLogoImageView"
                 android:layout_width="0dp"
@@ -98,8 +110,8 @@
                 app:layout_constraintEnd_toEndOf="@id/guidelineRight"
                 app:layout_constraintStart_toStartOf="@id/guidelineLeft"
                 app:layout_constraintTop_toBottomOf="@id/locationTextView"
-                tools:maxLines="34"
-                tools:text="@tools:sample/lorem/random" />
+                tools:maxLines="32"
+                tools:text="@tools:sample/lorem/random[2]" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/applyNowButton"

@@ -68,10 +68,10 @@ class JobDetailsFragment : BaseFragment<FragmentJobDetailsBinding>() {
     private fun handleState(state: JobDetailsState) {
         when (state) {
             is JobDetailsState.ShowLoading -> {
-
+                binding.progressBar.visibility = View.VISIBLE
             }
             is JobDetailsState.HideLoading -> {
-
+                binding.progressBar.visibility = View.GONE
             }
             is JobDetailsState.UpdateFavoriteIcon -> {
                 when (state.isFavorite) {

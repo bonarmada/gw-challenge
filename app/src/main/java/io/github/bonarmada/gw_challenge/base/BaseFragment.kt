@@ -2,6 +2,7 @@ package io.github.bonarmada.gw_challenge.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -67,5 +68,13 @@ abstract class BaseFragment<B : ViewDataBinding> : Fragment() {
                 it.text = title
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            requireActivity().onBackPressed()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
