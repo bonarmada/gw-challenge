@@ -7,12 +7,13 @@ Used repository pattern, simple but clear data flow from remote source to UI. Us
 
 
 #### Architecture
-App is purely written in kotlin, Used MVVM architectural pattern
+App is purely written in kotlin, Used MVVM architectural pattern. SOLID Principles particularly SRP is heavily applied, which makes the app maintainable and very easy to read.
 
 
 #### UI annd Design
-Functional, intuitive and aestethically pleasing design. Originally planned to be minimal and neutral but later on decided to choose my own palette, followed Material Design guidelines such as emphasis on vital information, proper spacing, proper use of shapes and white spaces.
+Functional, intuitive and aestethically pleasing design. Originally planned to be minimal and neutral but later on decided to choose my own palette, followed Material Design guidelines such as emphasis on vital information, proper spacing, proper use of shapes and white spaces. Credits to this [uplabs post](https://www.uplabs.com/posts/job-seeker-ui-kit-full) to which I referenced when I was trying to design the app.
 
+[Theming and styling](https://developer.android.com/guide/topics/ui/look-and-feel/themes) is utilized but only to used components. 
 
 #### Dependencies
 Most of these are pretty much community standards.
@@ -24,4 +25,6 @@ Most of these are pretty much community standards.
 * Retrofit2 & OkHttp - Networking and http client.
 * Gson - Mapper tool for json objects.
 * Room & ViewModel - used for persistence, also used ViewModels to mannage UI-related data i.e persisted data, view objects. 
+* Glide - image loading and caching library.
+* Timber - logging
 
