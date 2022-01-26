@@ -7,6 +7,11 @@ Goodwork is a job-seeker app that uses [The muse API: job boards and company pro
 * Save and unsave from favourites.
 
 
+![gw1](https://user-images.githubusercontent.com/13703275/151246927-e0cb06da-5e1c-4e43-b4b0-f99148e56d8b.png)
+![gw2](https://user-images.githubusercontent.com/13703275/151246932-9bc378d8-711b-4576-a21a-9fd6e7fabd4f.png)
+
+
+
 # Tech used
 
 MinSdk 23 - [as all practical, and rational developers should use](https://twitter.com/minsdkversion)
